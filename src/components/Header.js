@@ -4,7 +4,7 @@ const Header=({title,onAddBtn,showADD})=>{
   return(
     <header className='header'>
       <h1>{title}</h1>
-      <Button onClick={onAddBtn} color='green' text={showADD?'Close':'Add'}/>
+      <Button onClick={onAddBtn} color={showADD?'Red':'Green'} text={showADD?'Close':'Add'}/>
     </header>
   )
 }
