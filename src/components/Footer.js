@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom"
 const Footer=()=>{
   return(
     <div>
-<footer>Copyright &copy 2021</footer>
-<a href='/about'>About</a></div>
+<footer><p>Copyright &copy 2021</p>
+<Link to='/about'>About</Link>
+</footer>
+</div>
   )
 }
 export default Footer

@@ -4,8 +4,9 @@ import Tasks from './components/Tasks';
 import { useState,useEffect} from 'react'
 import AddTask from './components/AddTask';
 import {render} from 'react-dom'
-import {BrowserRouter as Router,Routes,Route}  from 'react-router-dom'
+//import {BrowserRouter as Router,Routes,Route}  from 'react-router-dom'
 import About from './components/About';
+import {BrowserRouter,Switch,Route,Redirect} from 'react-router-dom';
 
 
 function App() {
@@ -74,19 +75,22 @@ await fetch(`http://loalhost:5000/tasks/${id}`,{method:'DELETE'})
     setTasks(tasks.map((task) => task.id === id ? { ...task,reminder:!task.reminder} : task))
 }
 return (
-  <Router>
-  <div className="container">
+  
+  <div id="root" className="container">
+    <BrowserRouter>
     <Header onAddBtn={()=>setShowAddTask(!showAddTask)} showADD={showAddTask}/>
-    <Routes>
-    <Route path='/' exact render={(props)=>(
+    <Switch>
+      <Route path='/' exact render={(props)=>(
       <>{showAddTask&&<AddTask onAdd={addTask}/>}
     {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleRem} /> : 'No Task ASsigned'}
       </>
     )}/>
-    <Route path='/about' component={About}/>
-    </Routes>
+      <Route path='/about'><About/></Route> 
+      {/* component={About}/> */}
+   </Switch>
     <Footer/>
-  </div></Router>
+    </BrowserRouter>
+  </div>
 );
 }
 
