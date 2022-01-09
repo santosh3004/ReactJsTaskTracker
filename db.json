@@ -1,22 +1,10 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "text": "First Task Add Web App",
-      "day": "Nov 29 2021",
-      "reminder": true
-    },
-    {
-      "id": 2,
-      "text": "Second Task",
-      "day": "Nov 29 2021",
-      "reminder": true
-    },
-    {
-      "text": "SERVER Side Test",
-      "day": "2020",
+      "text": "asdasd",
+      "day": "asdasd",
       "reminder": true,
-      "id": 3
+      "id": 1
     }
   ]
 }
