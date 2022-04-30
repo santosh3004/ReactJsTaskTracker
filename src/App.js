@@ -71,14 +71,16 @@ function App() {
   }
   //Delete task
   const deleteTask = async (id) => {
+    const toDeleteId=id
 // await fetch(`http://localhost:5000/tasks/${id}`,{method:'DELETE'});
 //     setTasks(tasks.filter((task) => task.id !== id))
+
 
 await fetch(`http://api-tasktracker.usedones.xyz/api/delete`,{method:'POST',headers:{
   'Content-type':'application/json',
   'X-CSRF-TOKEN': csrf_token
 },
-body:JSON.stringify(id)});
+body:JSON.stringify({id:toDeleteId})})
     setTasks(tasks.filter((task) => task.id !== id))
 
   }
