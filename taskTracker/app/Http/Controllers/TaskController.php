@@ -35,5 +35,12 @@ class TaskController extends Controller
     public function deleteTask($id)
     {
        Task::find($id)->delete();
+       return response(['success'=>true, 'message'=>['Delted Sucessfully.']], 200);
+
+    }
+
+    public function showIndex()
+    {
+        return view('index');
     }
 }

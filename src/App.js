@@ -3,7 +3,6 @@ import Footer from './components/Footer';
 import Tasks from './components/Tasks';
 import { useState,useEffect} from 'react'
 import AddTask from './components/AddTask';
-import {render} from 'react-dom'
 //import {BrowserRouter as Router,Routes,Route}  from 'react-router-dom'
 import About from './components/About';
 import {BrowserRouter,Switch,Route} from 'react-router-dom';
@@ -30,7 +29,7 @@ function App() {
   // }
 
   const fetchTasks=async()=>{
-      const res=await fetch('http://127.0.0.1:8000/api/tasks')
+      const res=await fetch('http://api-tasktracker.usedones.xyz/api/tasks')
       const data=await res.json();
       console.log(data);
       return data;
@@ -40,7 +39,7 @@ function App() {
   //   const res=await fetch('http://localhost:5000/tasks/${id}')
   //   const data=await res.json()
   //   return data
-    const res=await fetch(`http://127.0.0.1:8000/api/task/${id}`)
+    const res=await fetch(`http://api-tasktracker.usedones.xyz/api/task/${id}`)
     const data=await res.json()
     return data;
   }
@@ -55,7 +54,7 @@ function App() {
   //     body:JSON.stringify(task)
   //   })
     //var csrf_token='<?php echo csrf_token(); ?>'
-    const res =await fetch('http://127.0.0.1:8000/api/savetask',{
+    const res =await fetch('http://api-tasktracker.usedones.xyz/api/savetask',{
       method:'POST',
       headers:{
         'Content-type':'application/json',
@@ -63,8 +62,8 @@ function App() {
       },
       body:JSON.stringify(task)
     })
-    const data=await res.json()
-    console.log(data);
+    //const data=await res.json()
+    //console.log(data);
     setTasks([...tasks,task])
     // const id=Math.floor(Math.random()*10000)+1
     // const newTask={id,...task}
@@ -75,7 +74,7 @@ function App() {
 // await fetch(`http://localhost:5000/tasks/${id}`,{method:'DELETE'});
 //     setTasks(tasks.filter((task) => task.id !== id))
 
-await fetch(`http://127.0.0.1:8000/api/delete/${id}`,{method:'DELETE'});
+await fetch(`http://api-tasktracker.usedones.xyz/api/delete/${id}`,{method:'DELETE'});
     setTasks(tasks.filter((task) => task.id !== id))
 
   }
@@ -84,7 +83,9 @@ await fetch(`http://127.0.0.1:8000/api/delete/${id}`,{method:'DELETE'});
 //   //Toggle Reminder
   const toggleRem = async (id) => {
     const taskToToggle=await fetchTask(id)
-    const updTask={...taskToToggle,reminder:!taskToToggle.reminder}
+    // const updTask={...taskToToggle,reminder:!taskToToggle.reminder
+      const updTask={reminder:!taskToToggle.reminder}
+    
 
 //     const res =await fetch('http://localhost:5000/tasks/${id}',{
 //       method:'PUT',
@@ -96,7 +97,7 @@ await fetch(`http://127.0.0.1:8000/api/delete/${id}`,{method:'DELETE'});
 //     const data=await res.json()
 
 
-    const res =await fetch('http://127.0.0.1:8000/api/updatetask',{
+    const res =await fetch(`http://api-tasktracker.usedones.xyz/api/updatetask/${id}`,{
       method:'PUT',
       headers:{
         'Content-type':'application/json',
@@ -110,7 +111,7 @@ await fetch(`http://127.0.0.1:8000/api/delete/${id}`,{method:'DELETE'});
 }
 return (
   
-  <div id="root" className="container">
+  <div className="container">
     <BrowserRouter>
     <Header onAddBtn={()=>setShowAddTask(!showAddTask)} showADD={showAddTask}/>
     <Switch>
