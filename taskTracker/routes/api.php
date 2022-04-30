@@ -24,4 +24,4 @@ Route::post('/savetask',[TaskController::class,'saveTask']);
 Route::get('/tasks',[TaskController::class,'getTasks']);
 Route::get('/task/{id}',[TaskController::class,'getTask']);
 Route::put('/updatetask',[TaskController::class,'updateTask']);
-Route::delete('/delete/{id}',[TaskController::class,'deleteTask']);
+Route::post('/delete',[TaskController::class,'deleteTask']);

@@ -32,9 +32,9 @@ class TaskController extends Controller
       return response(['success'=>true, 'message'=>['Updated Successfully']], 200);
     }
 
-    public function deleteTask($id)
+    public function deleteTask(Request $request)
     {
-       Task::find($id)->delete();
+       Task::find($request->id)->delete();
        return response(['success'=>true, 'message'=>['Delted Sucessfully.']], 200);
 
     }
