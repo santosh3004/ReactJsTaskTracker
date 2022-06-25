@@ -29,7 +29,7 @@ function App() {
   // }
 
   const fetchTasks=async()=>{
-      const res=await fetch('http://api-tasktracker.usedones.xyz/api/tasks')
+      const res=await fetch('https://api-tasktracker.usedones.xyz/api/tasks')
       const data=await res.json();
       console.log(data);
       return data;
@@ -39,7 +39,7 @@ function App() {
   //   const res=await fetch('http://localhost:5000/tasks/${id}')
   //   const data=await res.json()
   //   return data
-    const res=await fetch(`http://api-tasktracker.usedones.xyz/api/task/${id}`)
+    const res=await fetch(`https://api-tasktracker.usedones.xyz/api/task/${id}`)
     const data=await res.json()
     return data;
   }
@@ -54,7 +54,7 @@ function App() {
   //     body:JSON.stringify(task)
   //   })
     //var csrf_token='<?php echo csrf_token(); ?>'
-    const res =await fetch('http://api-tasktracker.usedones.xyz/api/savetask',{
+    const res =await fetch('https://api-tasktracker.usedones.xyz/api/savetask',{
       method:'POST',
       headers:{
         'Content-type':'application/json',
@@ -76,7 +76,7 @@ function App() {
 //     setTasks(tasks.filter((task) => task.id !== id))
 
 
-await fetch(`http://api-tasktracker.usedones.xyz/api/delete`,{method:'POST',headers:{
+await fetch(`https://api-tasktracker.usedones.xyz/api/delete`,{method:'POST',headers:{
   'Content-type':'application/json',
   'X-CSRF-TOKEN': csrf_token
 },
@@ -103,7 +103,7 @@ body:JSON.stringify({id:toDeleteId})})
 //     const data=await res.json()
 
 
-    const res =await fetch(`http://api-tasktracker.usedones.xyz/api/updatetask/${id}`,{
+    const res =await fetch(`https://api-tasktracker.usedones.xyz/api/updatetask/${id}`,{
       method:'PUT',
       headers:{
         'Content-type':'application/json',
